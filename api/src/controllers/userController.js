@@ -1,8 +1,7 @@
-const listUser = require("../services/listUser");
+const createUser = require("../services/createUserService");
 class UserController {
-  list(req, res) {
-    const users = listUser();
-    return res.status(200).send(users);
+  createUser(request, response) {
+    return createUser(request, response);
   }
 }
 

@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Usuario {
-  id              BigInt   @id(map: "pk_usuario") @default(autoincrement())
+  id              Int      @id(map: "pk_usuario") @default(autoincrement())
   nome            String   @db.VarChar(255)
   email           String   @unique(map: "uk_usuario_email") @db.VarChar(255)
   data_nascimento DateTime @db.Date
