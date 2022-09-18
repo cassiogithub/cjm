@@ -13,8 +13,8 @@ export function Header() {
 
   return (
     <header className="w-screen  border-b">
-      <nav class="border-gray-200 px-2 sm:px-4 py-2.5 container mx-auto">
-        <div class="container flex flex-wrap justify-between items-center mx-auto">
+      <nav className="border-gray-200 px-2 sm:px-4 py-2.5 container mx-auto">
+        <div className="container flex flex-wrap justify-between items-center mx-auto">
           <a href="/">
             <div className="w-10 sm:w-12">
               <img src={LogoCJM} alt="" />
@@ -23,7 +23,7 @@ export function Header() {
 
           <MenuHamburger />
 
-          <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+          <div className="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul className={styleList}>
               <li>
                 <a href="#" className={styleAtualLink} aria-current="page">

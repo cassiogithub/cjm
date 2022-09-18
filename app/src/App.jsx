@@ -1,14 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
-import { Home } from './ui/screens'
+import { CadastroScreen, Home, LoginScreen } from './ui/screens'
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
-       <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginScreen />} />
+        <Route path="/cadastro" element={<CadastroScreen />} />
+        <Route path="*" element={<LoginScreen />} />
+      </Routes>
     </div>
   )
 }
