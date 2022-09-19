@@ -7,6 +7,11 @@ async function createUser(request, response) {
   const SALT_ROUNDS = 8
   const senha = bcrypt.hashSync(request.body.senha, SALT_ROUNDS)
 
+  if (!nome || !email || !dataNascimento || !senha) {
+    return response.status(400)
+    .send('Os campos Nome, Email, data de nascimento e senha, são obrigatórios!')
+  }
+
   try {
     const user = await prismaClient.usuario.create({
       data: {

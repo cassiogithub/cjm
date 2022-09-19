@@ -7,7 +7,11 @@ const ONE_HOUR = 3600
 
 async function login(request, response) {
   const { email, senha } = request.body
-  const invalidCredentials = { error: 'Usuário ou Senha incorretos!' }
+  const invalidCredentials = 'Usuário ou Senha incorretos!'
+  
+  if (!email || !senha) {
+    return response.status(400).send('Os campos Email e Senha são obrigatórios')
+  }
 
   const user = await prismaClient.usuario.findUnique({
     where: { email: email },

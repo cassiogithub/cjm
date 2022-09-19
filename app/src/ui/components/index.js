@@ -1,2 +1,5 @@
 export { Header } from './header/header.component'
 export { MenuHamburger } from './menu-hamburger/menu-hamburger.component'
+export { Button } from './button/button.component'
+export { InputTextGroup } from './input-text-group/input-text-group.component'
+export { AboutUs } from './about-us/about-us.component'
