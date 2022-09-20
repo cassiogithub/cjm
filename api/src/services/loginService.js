@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken')
 const prismaClient = require('../database/prismaClient')
 const loginResponse = require('../mapper/loginResponse')
 
-const ONE_HOUR = 3600
-
 async function login(request, response) {
   const { email, senha } = request.body
   const invalidCredentials = 'Usuário ou Senha incorretos!'
