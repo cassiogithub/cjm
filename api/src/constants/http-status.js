@@ -1,0 +1,15 @@
+const UNAUTHORIZED = 401
+const BAD_REQUEST = 400
+const NOT_FOUND = 404
+const OK = 200
+const CREATED = 201
+const NO_CONTENT = 204
+
+module.exports = {
+  UNAUTHORIZED,
+  NOT_FOUND,
+  CREATED,
+  NO_CONTENT,
+  BAD_REQUEST,
+  OK,
+}
