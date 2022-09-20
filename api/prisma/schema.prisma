@@ -14,4 +14,15 @@ model Usuario {
   data_nascimento DateTime @db.Date
   senha           String   @db.VarChar(100)
   url_imagem      String?  @db.VarChar(500)
+  Evento          Evento[]
+}
+
+model Evento {
+  id           Int      @id(map: "pk_evento") @default(autoincrement())
+  nome         String   @db.VarChar(255)
+  local        String   @db.VarChar(255)
+  data_evento  DateTime @db.Timestamp()
+  link_convite String   @db.VarChar(100)
+  usuario      Usuario  @relation(fields: [usuarioId], references: [id])
+  usuarioId    Int
 }
