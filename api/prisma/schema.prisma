@@ -23,6 +23,7 @@ model Evento {
   local        String   @db.VarChar(255)
   data_evento  DateTime @db.Timestamp()
   link_convite String   @db.VarChar(100)
+  hash_evento  String   @db.VarChar(100)
   usuario      Usuario  @relation(fields: [usuarioId], references: [id])
   usuarioId    Int
 }
