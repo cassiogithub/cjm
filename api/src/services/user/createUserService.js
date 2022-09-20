@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
-const prismaClient = require('../database/prismaClient')
-const createUserResponse = require('../mapper/createUserResponse')
+const prismaClient = require('../../database/prismaClient')
+const createUserResponse = require('../../mapper/createUserResponse')
 
 async function createUser(request, response) {
   const { nome, email, dataNascimento, urlImagem } = request.body
@@ -8,8 +8,9 @@ async function createUser(request, response) {
   const senha = bcrypt.hashSync(request.body.senha, SALT_ROUNDS)
 
   if (!nome || !email || !dataNascimento || !senha) {
-    return response.status(400)
-    .send('Os campos Nome, Email, data de nascimento e senha, são obrigatórios!')
+    return response
+      .status(400)
+      .send('Os campos Nome, Email, data de nascimento e senha, são obrigatórios!')
   }
 
   try {

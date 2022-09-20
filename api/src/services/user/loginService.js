@@ -1,12 +1,12 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const prismaClient = require('../database/prismaClient')
-const loginResponse = require('../mapper/loginResponse')
+const prismaClient = require('../../database/prismaClient')
+const loginResponse = require('../../mapper/loginResponse')
 
 async function login(request, response) {
   const { email, senha } = request.body
   const invalidCredentials = 'Usuário ou Senha incorretos!'
-  
+
   if (!email || !senha) {
     return response.status(400).send('Os campos Email e Senha são obrigatórios')
   }
