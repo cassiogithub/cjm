@@ -1,5 +1,5 @@
-const createUser = require('../services/createUserService')
-const login = require('../services/loginService')
+const createUser = require('../services/user/createUserService')
+const login = require('../services/user/loginService')
 class UserController {
   createUser(request, response) {
     return createUser(request, response)
