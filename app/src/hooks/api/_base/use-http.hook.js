@@ -1,5 +1,7 @@
 import { useUserGlobal } from '../../../context'
+import { UNAUTHORIZED } from '../../../constants'
 import axios from 'axios'
+
 export function useHttp(baseURL, headers) {
   const [, setUserGlobal] = useUserGlobal()
   const instance = axios.create({
@@ -12,7 +14,7 @@ export function useHttp(baseURL, headers) {
       const response = await instance.get(url)
       return response.data
     } catch (error) {
-      if (error.response.status === 401) {
+      if (error.response.status === UNAUTHORIZED) {
         setUserGlobal({})
       }
       throw error
@@ -24,7 +26,7 @@ export function useHttp(baseURL, headers) {
       const response = await instance.post(url, data)
       return response.data
     } catch (error) {
-      if (error.response.status === 401) {
+      if (error.response.status === UNAUTHORIZED) {
         setUserGlobal({})
       }
       throw error
@@ -36,7 +38,7 @@ export function useHttp(baseURL, headers) {
       const response = await instance.put(url, data)
       return response.data
     } catch (error) {
-      if (error.response.status === 401) {
+      if (error.response.status === UNAUTHORIZED) {
         setUserGlobal({})
       }
       throw error
