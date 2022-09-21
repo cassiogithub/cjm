@@ -1,3 +1,4 @@
+const { BAD_REQUEST, UNAUTHORIZED, OK } = require('../../constants/http-status')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const prismaClient = require('../../database/prismaClient')
@@ -8,7 +9,7 @@ async function login(request, response) {
   const invalidCredentials = 'Usuário ou Senha incorretos!'
 
   if (!email || !senha) {
-    return response.status(400).send('Os campos Email e Senha são obrigatórios')
+    return response.status(BAD_REQUEST).send('Os campos Email e Senha são obrigatórios')
   }
 
   const user = await prismaClient.usuario.findUnique({
@@ -16,12 +17,12 @@ async function login(request, response) {
   })
 
   if (!user) {
-    return response.status(401).send(invalidCredentials)
+    return response.status(UNAUTHORIZED).send(invalidCredentials)
   }
 
   const isValidPassword = bcrypt.compareSync(senha, user.senha)
   if (!isValidPassword) {
-    return response.status(401).send(invalidCredentials)
+    return response.status(UNAUTHORIZED).send(invalidCredentials)
   }
 
   const JWTdata = {
@@ -30,7 +31,7 @@ async function login(request, response) {
   }
   const token = jwt.sign(JWTdata, process.env.JWT_SECRET)
 
-  return response.status(200).send(loginResponse(user, token))
+  return response.status(OK).send(loginResponse(user, token))
 }
 
 module.exports = login

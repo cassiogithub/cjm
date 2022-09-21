@@ -1,3 +1,4 @@
+const { NOT_FOUND } = require('../../constants/http-status')
 const prismaClient = require('../../database/prismaClient')
 
 async function getUserById(id, response) {
@@ -6,7 +7,7 @@ async function getUserById(id, response) {
       id: id,
     },
   })
-  
+
   if (!user) {
     return response.status(NOT_FOUND).send('O ID informado não é valido')
   }

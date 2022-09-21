@@ -7,6 +7,7 @@ const { NOT_FOUND, BAD_REQUEST, CREATED } = require('../../constants/http-status
 async function createEvent(request, response) {
   const { nome, local, dataEvento } = request.body
   const { userId } = request.params
+  
   if (!nome || !local || !dataEvento || !userId) {
     return response
       .status(BAD_REQUEST)
