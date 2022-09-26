@@ -2,7 +2,13 @@ const prismaClient = require('../../database/prismaClient')
 const { OK, BAD_REQUEST, NOT_FOUND } = require('../../constants/http-status')
 
 async function listEventsPageable(request, response) {
-  const { userId, page, size } = request.params
+  const userId = parseInt(request.params.userId)
+  const page = parseInt(request.params.page)
+  const size = parseInt(request.params.size)
+
+  if (isNaN(userId) || isNaN(page) || isNaN(size)) {
+    return response.status(BAD_REQUEST).send('Parametros informados não são válidos')
+  }
 
   const user = await prismaClient.usuario.findUnique({
     where: {
@@ -19,6 +25,9 @@ async function listEventsPageable(request, response) {
     take: parseInt(size),
     where: {
       usuarioId: parseInt(userId),
+    },
+    orderBy: {
+      data_evento: 'desc',
     },
   })
 
