@@ -10,8 +10,13 @@ routes.post('/login', (request, response) => UserController.login(request, respo
 routes.post('/evento/:userId', (request, response) =>
   EventController.createEvent(request, response)
 )
+
 routes.get('/evento', (request, response) =>
   EventController.getEvent(request, response)
+)
+
+routes.get('/evento/:userId/:page/:size', (request, response) =>
+  EventController.listEventsPageable(request, response)
 )
 
 module.exports = routes
