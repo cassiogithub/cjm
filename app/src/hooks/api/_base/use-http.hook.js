@@ -9,14 +9,18 @@ export function useHttp(baseURL, headers) {
     headers,
   })
 
+  function checkUnauthorized(error) {
+    if (error.response.status === UNAUTHORIZED) {
+      setUserGlobal({})
+    }
+  }
+
   async function get(url) {
     try {
       const response = await instance.get(url)
       return response.data
     } catch (error) {
-      if (error.response.status === UNAUTHORIZED) {
-        setUserGlobal({})
-      }
+      checkUnauthorized(error)
       throw error
     }
   }
@@ -26,9 +30,7 @@ export function useHttp(baseURL, headers) {
       const response = await instance.post(url, data)
       return response.data
     } catch (error) {
-      if (error.response.status === UNAUTHORIZED) {
-        setUserGlobal({})
-      }
+      checkUnauthorized(error)
       throw error
     }
   }
@@ -38,9 +40,7 @@ export function useHttp(baseURL, headers) {
       const response = await instance.put(url, data)
       return response.data
     } catch (error) {
-      if (error.response.status === UNAUTHORIZED) {
-        setUserGlobal({})
-      }
+      checkUnauthorized(error)
       throw error
     }
   }
