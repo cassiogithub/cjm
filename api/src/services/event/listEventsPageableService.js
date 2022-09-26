@@ -12,7 +12,7 @@ async function listEventsPageable(request, response) {
 
   const user = await prismaClient.usuario.findUnique({
     where: {
-      id: parseInt(userId),
+      id: userId,
     },
   })
 
@@ -22,9 +22,9 @@ async function listEventsPageable(request, response) {
 
   const events = await prismaClient.evento.findMany({
     skip: page * size,
-    take: parseInt(size),
+    take: size,
     where: {
-      usuarioId: parseInt(userId),
+      usuarioId: userId,
     },
     orderBy: {
       data_evento: 'desc',
