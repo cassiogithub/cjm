@@ -13,7 +13,7 @@ export function Header() {
   const styleList =
     'flex flex-col p-4 mt-4 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700'
 
-  function compareLocation(path) {
+  function isLocation(path) {
     const location = useLocation()
     return path === location.pathname
   }
@@ -35,7 +35,7 @@ export function Header() {
               <li>
                 <Link
                   to="/"
-                  className={compareLocation('/') ? styleAtualLink : styleLink}
+                  className={isLocation('/') ? styleAtualLink : styleLink}
                   aria-current="page"
                 >
                   Home
@@ -44,7 +44,7 @@ export function Header() {
               <li>
                 <Link
                   to="/novo-evento"
-                  className={compareLocation('/novo-evento') ? styleAtualLink : styleLink}
+                  className={isLocation('/novo-evento') ? styleAtualLink : styleLink}
                 >
                   Novo evento
                 </Link>
@@ -52,16 +52,13 @@ export function Header() {
               <li>
                 <Link
                   to="/buscar-evento"
-                  className={compareLocation('/buscar-evento') ? styleAtualLink : styleLink}
+                  className={isLocation('/buscar-evento') ? styleAtualLink : styleLink}
                 >
                   Buscar eventos
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/dicas"
-                  className={compareLocation('/discas') ? styleAtualLink : styleLink}
-                >
+                <Link to="/dicas" className={isLocation('/discas') ? styleAtualLink : styleLink}>
                   Dicas
                 </Link>
               </li>
