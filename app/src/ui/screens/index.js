@@ -1,3 +1,5 @@
 export { Home } from './home/home.screen'
 export { CadastroScreen } from './cadastro/cadastro.screen'
 export { LoginScreen } from './login/login.screen'
+export { NovoEvento } from './novo-evento/novo-evento.screen'
+export { PrivateRoute } from '../screens/utils/privateRoute.utils'

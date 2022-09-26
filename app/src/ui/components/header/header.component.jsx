@@ -1,4 +1,6 @@
-import { MenuHamburger } from '..'
+import { MenuHamburger } from '../'
+import { ExitIcon } from '../../../assets'
+import { Link } from 'react-router-dom'
 import LogoCJM from '../../../assets/cjm_logo.png'
 
 export function Header() {
@@ -12,41 +14,43 @@ export function Header() {
     'flex flex-col p-4 mt-4 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700'
 
   return (
-    <header className="w-screen  border-b">
-      <nav className="border-gray-200 px-2 sm:px-4 py-2.5 container mx-auto">
+    <header className="w-screen  border-b py-2">
+      <nav className="border-gray-200  container mx-auto">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
-          <a href="/">
+          <Link to="/">
             <div className="w-10 sm:w-12">
-              <img src={LogoCJM} alt="" />
+              <img src={LogoCJM} alt="logo" />
             </div>
-          </a>
+          </Link>
 
           <MenuHamburger />
 
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul className={styleList}>
               <li>
-                <a href="#" className={styleAtualLink} aria-current="page">
+                <Link to="/" className={styleAtualLink} aria-current="page">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className={styleLink}>
+                <Link to="/meus-eventos" className={styleLink}>
                   Meus Eventos
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className={styleLink}>
+                <Link to="/novo-evento" className={styleLink}>
                   Novo evento
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className={styleLink}>
-                  Sair
-                </a>
+                <Link to="/buscar-evento" className={styleLink}>
+                  Buscar eventos
+                </Link>
               </li>
             </ul>
           </div>
+
+          <ExitIcon />
         </div>
       </nav>
     </header>
