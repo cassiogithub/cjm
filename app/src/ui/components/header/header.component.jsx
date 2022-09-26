@@ -1,6 +1,6 @@
 import { MenuHamburger } from '../'
 import { ExitIcon } from '../../../assets'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import LogoCJM from '../../../assets/cjm_logo.png'
 
 export function Header() {
@@ -12,6 +12,11 @@ export function Header() {
 
   const styleList =
     'flex flex-col p-4 mt-4 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700'
+
+  function compareLocation(path) {
+    const location = useLocation()
+    return path === location.pathname
+  }
 
   return (
     <header className="w-screen  border-b py-2">
@@ -28,23 +33,36 @@ export function Header() {
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul className={styleList}>
               <li>
-                <Link to="/" className={styleAtualLink} aria-current="page">
+                <Link
+                  to="/"
+                  className={compareLocation('/') ? styleAtualLink : styleLink}
+                  aria-current="page"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/meus-eventos" className={styleLink}>
-                  Meus Eventos
-                </Link>
-              </li>
-              <li>
-                <Link to="/novo-evento" className={styleLink}>
+                <Link
+                  to="/novo-evento"
+                  className={compareLocation('/novo-evento') ? styleAtualLink : styleLink}
+                >
                   Novo evento
                 </Link>
               </li>
               <li>
-                <Link to="/buscar-evento" className={styleLink}>
+                <Link
+                  to="/buscar-evento"
+                  className={compareLocation('/buscar-evento') ? styleAtualLink : styleLink}
+                >
                   Buscar eventos
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dicas"
+                  className={compareLocation('/discas') ? styleAtualLink : styleLink}
+                >
+                  Dicas
                 </Link>
               </li>
             </ul>
