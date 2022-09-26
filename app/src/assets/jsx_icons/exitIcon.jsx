@@ -2,7 +2,14 @@ import React from 'react'
 
 export function ExitIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="47" fill="none" viewBox="0 0 48 47">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="48"
+      height="47"
+      fill="none"
+      viewBox="0 0 48 47"
+      className="p-1 hover:cursor-pointer hover:rounded hover:bg-red-700 transition-all "
+    >
       <path
         stroke="#E5E7EB"
         strokeLinecap="round"
