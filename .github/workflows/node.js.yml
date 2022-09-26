@@ -23,6 +23,7 @@ jobs:
           usedocker: true
           dontuseforce: true
       - name: Publicação
+      
       - run: git subtree push --api heroku main
       - run: heroku container:release -a cjm-api web 
         env:
