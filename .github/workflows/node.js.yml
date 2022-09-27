@@ -12,8 +12,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: onekiloparsec/heroku-node-deploy-subfolder@v1.1.0 
         with:
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "cjm-api"
+          api_key: ${{secrets.HEROKU_API_KEY}}
+          email: ${{secrets.HEROKU_EMAIL}}
+          app_name: "cjm-api"
           heroku_branch: "main"
           subfolder: "api"
