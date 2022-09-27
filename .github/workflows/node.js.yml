@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: CDNievas/heroku-action@v1.0 # This is the action
+      - uses: onekiloparsec/heroku-node-deploy-subfolder@v1.1.0 
         with:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "cjm-api"
+          heroku_branch: "main"
+          subfolder: "api"
