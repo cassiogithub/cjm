@@ -1,6 +1,7 @@
 const prismaClient = require('../../database/prismaClient')
 const { OK, BAD_REQUEST, NOT_FOUND } = require('../../constants/http-status')
 const EMPTY_ARRAY = require('../../constants/empty-array')
+const listEventsPageableResponse = require('../../mapper/listEventPageableResponse')
 
 async function listEventsPageable(request, response) {
   const userId = parseInt(request.params.userId)
@@ -32,11 +33,16 @@ async function listEventsPageable(request, response) {
     },
   })
 
+  const totalEvents = await prismaClient.evento.count()
+  const totalPages = Math.ceil(totalEvents / size)
+
   if (events.length <= EMPTY_ARRAY) {
     return response.status(BAD_REQUEST).send('Ops, página solicitada não contém itens')
   }
 
-  return response.status(OK).send(events)
+  const responseMapper = listEventsPageableResponse(events, totalPages)
+
+  return response.status(OK).send(responseMapper)
 }
 
 module.exports = listEventsPageable

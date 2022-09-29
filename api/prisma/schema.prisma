@@ -26,4 +26,5 @@ model Evento {
   hash_evento  String   @db.VarChar(100)
   usuario      Usuario  @relation(fields: [usuarioId], references: [id])
   usuarioId    Int
+  ativo        Boolean  @default(true)
 }
