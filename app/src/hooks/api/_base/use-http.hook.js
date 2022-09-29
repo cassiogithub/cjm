@@ -45,9 +45,21 @@ export function useHttp(baseURL, headers) {
     }
   }
 
+  async function patch(url, data) {
+    try {
+      const response = await instance.patch(url, data)
+      return response.data
+    } catch (error) {
+      console.log(error)
+      checkUnauthorized(error)
+      throw error
+    }
+  }
+
   return {
     get,
     post,
     put,
+    patch,
   }
 }

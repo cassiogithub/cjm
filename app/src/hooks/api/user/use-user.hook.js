@@ -1,5 +1,6 @@
 import { useHttp } from '../_base/use-http.hook'
 import { BASE_URL } from '../../../constants'
+import { useMemo } from 'react'
 export function useUser() {
   const instance = useHttp(BASE_URL)
 
@@ -11,8 +12,11 @@ export function useUser() {
     return instance.post('/login', login)
   }
 
-  return {
-    registryUser,
-    loginUser,
-  }
+  return useMemo(
+    () => ({
+      registryUser,
+      loginUser,
+    }),
+    []
+  )
 }

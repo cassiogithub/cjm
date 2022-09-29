@@ -1,0 +1,2 @@
+export const EVENT_SIZE_PAGEABLE_DEFAULT = 4
+export const EVENT_PAGE_INITIAL = 0
