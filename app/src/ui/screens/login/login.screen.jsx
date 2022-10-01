@@ -4,22 +4,26 @@ import { useUser } from '../../../hooks/api'
 import { BASE_REGISTER_USER } from '../../../constants'
 import { useToastContext } from '../../../hooks/service/use-toast.hook'
 import { useNavigate } from 'react-router-dom'
-import { useUserGlobal } from '../../../context'
+import { useLoader, useUserGlobal } from '../../../context'
 
 export function LoginScreen() {
   const navigate = useNavigate()
   const addToast = useToastContext()
   const [, setUserGlobal] = useUserGlobal()
+  const [, setLoader] = useLoader()
   const { loginUser } = useUser()
   const [login, setLogin] = useState(BASE_REGISTER_USER)
 
   async function handleLogin() {
     try {
+      setLoader(true)
       const response = await loginUser(login)
       addToast('Login efetuado !')
       setUserGlobal(response)
       navigate('/')
+      setLoader(false)
     } catch (error) {
+      setLoader(false)
       error.response.data && addToast(error.response.data, true)
     }
   }
@@ -61,7 +65,10 @@ export function LoginScreen() {
 
           <div className="flex justify-between items-center w-8/12 mt-4">
             <Button value="Login" secondary={true} onClick={handleLogin} />
-            <Button value="Cadastrar-se" onClick={() => navigate('/cadastro')} />
+            <Button
+              value="Cadastrar-se"
+              onClick={() => navigate('/cadastro')}
+            />
           </div>
         </form>
       </div>

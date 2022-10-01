@@ -1,6 +1,13 @@
 import './App.css'
-import { CadastroScreen, Home, LoginScreen, NovoEvento, PrivateRoute } from './ui/screens'
+import {
+  CadastroScreen,
+  Home,
+  LoginScreen,
+  NovoEvento,
+  PrivateRoute,
+} from './ui/screens'
 import { Routes, Route } from 'react-router-dom'
+import { Loader } from './ui/components'
 
 function App() {
   return (
@@ -26,6 +33,7 @@ function App() {
         />
         <Route path="*" element={<LoginScreen />} />
       </Routes>
+      <Loader />
     </div>
   )
 }

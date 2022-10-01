@@ -5,9 +5,11 @@ import { BASE_REGISTER_USER } from '../../../constants'
 import { checkSameValues } from '../../../functions/same-values.function'
 import { useToastContext } from '../../../hooks/service/use-toast.hook'
 import { useNavigate } from 'react-router-dom'
+import { useLoader } from '../../../context'
 
 export function CadastroScreen() {
   const [cadastro, setCadastro] = useState(BASE_REGISTER_USER)
+  const [, setLoader] = useLoader()
   const { registryUser } = useUser()
   const addToast = useToastContext()
   const navigate = useNavigate()
@@ -19,11 +21,18 @@ export function CadastroScreen() {
 
   async function handleCadastrarUsuario() {
     try {
-      checkSameValues(cadastro.senha, cadastro.confirmaSenha, 'Campos de senha não conferem')
+      setLoader(true)
+      checkSameValues(
+        cadastro.senha,
+        cadastro.confirmaSenha,
+        'Campos de senha não conferem'
+      )
       await registryUser(cadastro)
       addToast('Você foi cadastrado com sucesso!')
       setCadastro(BASE_REGISTER_USER)
+      setLoader(false)
     } catch (error) {
+      setLoader(false)
       !error.response && addToast(error.message, true)
       error.response.data && addToast(error.response.data, true)
     }
@@ -43,7 +52,12 @@ export function CadastroScreen() {
           className="flex flex-col items-center bg-zinc-900 py-6 px-4 rounded-xl w-8/12 gap-3"
           onSubmit={handleSubmit}
         >
-          <InputTextGroup name="nome" value={cadastro.nome} label="Nome" onChange={handleChange} />
+          <InputTextGroup
+            name="nome"
+            value={cadastro.nome}
+            label="Nome"
+            onChange={handleChange}
+          />
           <InputTextGroup
             name="email"
             value={cadastro.email}
@@ -73,7 +87,11 @@ export function CadastroScreen() {
             type="password"
           />
           <div className="flex justify-between items-center w-8/12 mt-4">
-            <Button value="Cadastrar-se" secondary={true} onClick={handleCadastrarUsuario} />
+            <Button
+              value="Cadastrar-se"
+              secondary={true}
+              onClick={handleCadastrarUsuario}
+            />
             <Button value="Login" onClick={() => navigate('/login')} />
           </div>
         </form>

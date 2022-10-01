@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react'
 import { BASE_LIST_EVENT } from '../../../constants'
-import { useUserGlobal } from '../../../context'
+import { useUserGlobal, useLoader } from '../../../context'
 import { useEvent } from '../../../hooks/api'
-import { EventoCard, Header, HomeInfoEvento, HomeTableUsers } from '../../components'
+import {
+  EventoCard,
+  Header,
+  HomeInfoEvento,
+  HomeTableUsers,
+} from '../../components'
 
 export function Home() {
   const [userGlobal] = useUserGlobal()
+  const [, setLoader] = useLoader()
   const { listEvents, alterAtivoEvent } = useEvent()
   const [listEvent, setListEvent] = useState(BASE_LIST_EVENT)
   const [pages, setPages] = useState([])
@@ -20,8 +26,11 @@ export function Home() {
   }
 
   async function handleDisableEvent(eventId) {
+    setLoader(true)
     const response = await alterAtivoEvent(userGlobal.id, eventId)
-    const filterSameEvent = listEvent.content.filter((value) => value.id !== response.id)
+    const filterSameEvent = listEvent.content.filter(
+      (value) => value.id !== response.id
+    )
     const newArray = [...filterSameEvent, response]
     const sorted = newArray.sort((a, b) => {
       return new Date(a.data_evento) - new Date(b.data_evento)
@@ -30,16 +39,19 @@ export function Home() {
       ...listEvent,
       content: [...sorted],
     })
+    setLoader(false)
   }
 
   useEffect(() => {
     async function getListEvent() {
+      setLoader(true)
       const response = await listEvents(userGlobal.id, listEvent.atualPage)
       setListEvent({
         ...listEvent,
         content: [...response.content],
         totalPages: response.totalPages,
       })
+      setLoader(false)
     }
     getListEvent()
   }, [listEvents, listEvent.atualPage])

@@ -1,22 +1,31 @@
 import { useState } from 'react'
-import { Button, Header, InputTextGroup, NovoEventoListInfo } from '../../components'
+import {
+  Button,
+  Header,
+  InputTextGroup,
+  NovoEventoListInfo,
+} from '../../components'
 import { BASE_REGISTER_EVENT } from '../../../constants'
 import { useEvent } from '../../../hooks/api'
 import { useToastContext } from '../../../hooks/service/use-toast.hook'
-import { useUserGlobal } from '../../../context'
+import { useLoader, useUserGlobal } from '../../../context'
 
 export function NovoEvento() {
   const { createEvent } = useEvent()
   const addToast = useToastContext()
   const [userGlobal] = useUserGlobal()
+  const [, setLoader] = useLoader()
   const [registerEvent, setRegisterEvent] = useState(BASE_REGISTER_EVENT)
 
   async function handleCreateEvent() {
     try {
+      setLoader(true)
       await createEvent(userGlobal.id, registerEvent)
       setRegisterEvent(BASE_REGISTER_EVENT)
       addToast('Evento criado com sucesso!')
+      setLoader(false)
     } catch (error) {
+      setLoader(false)
       error.response.data && addToast(error.response.data, true)
     }
   }
@@ -64,7 +73,11 @@ export function NovoEvento() {
               value={registerEvent.dataEvento}
               type="datetime-local"
             />
-            <Button value="Criar Evento" secondary={true} onClick={handleCreateEvent} />
+            <Button
+              value="Criar Evento"
+              secondary={true}
+              onClick={handleCreateEvent}
+            />
           </form>
         </div>
       </main>

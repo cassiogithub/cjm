@@ -7,3 +7,4 @@ export { NovoEventoListInfo } from './novo-evento-list-info/novo-evento-list-inf
 export { HomeInfoEvento } from './home-info-evento/home-info-evento.component'
 export { HomeTableUsers } from './home-table-users/home-table-users.component'
 export { EventoCard } from './evento-card/evento-card.component'
+export { Loader } from './loader/loader.component'
