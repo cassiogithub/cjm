@@ -1,28 +1,39 @@
 import { CopyIcon } from '../../../assets'
+import { formatDate } from '../../../functions'
+import { useToastContext } from '../../../hooks/service'
+export function HomeInfoEvento({ event }) {
+  const addToast = useToastContext()
+  function copyToClipboard() {
+    navigator.clipboard.writeText(event.link_convite)
+    addToast('Link copiado com sucesso!')
+  }
 
-export function HomeInfoEvento() {
-  //to clipboard
-  //onClick={() => {navigator.clipboard.writeText(this.state.textToCopy)}}
   return (
     <ul className="flex flex-col gap-2">
       <li>
         <span className="text-sm">Evento</span>
-        <p className="text-lg">Churrasco na minha casa</p>
+        <p className="text-lg">{event.nome}</p>
       </li>
       <li>
         <span className="text-sm">Local</span>
-        <p className="text-lg">Coronel Álvaro de Moraes 1115</p>
+        <p className="text-lg">{event.local}</p>
       </li>
       <li>
         <span className="text-sm">Data/Hora</span>
-        <p className="text-lg">Dia 01/01/2022 as 14:00</p>
+        <p className="text-lg">{formatDate(event.data_evento)}</p>
       </li>
       <li>
         <span className="text-sm">Link de cnvite</span>
         <p className="flex items-center gap-2">
-          <CopyIcon />
-          <a href="https://bityli.com/lJjHshV" target="_blank" rel="noopener noreferrer">
-            https://bityli.com/lJjHshV
+          <button onClick={copyToClipboard}>
+            <CopyIcon />
+          </button>
+          <a
+            href="https://bityli.com/lJjHshV"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {event.link_convite}
           </a>
         </p>
       </li>

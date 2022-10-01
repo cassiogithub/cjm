@@ -14,6 +14,7 @@ export function Home() {
   const [, setLoader] = useLoader()
   const { listEvents, alterAtivoEvent } = useEvent()
   const [listEvent, setListEvent] = useState(BASE_LIST_EVENT)
+  const [eventSelected, setEventSelected] = useState({})
   const [pages, setPages] = useState([])
 
   async function handleSelectPage(page) {
@@ -23,6 +24,10 @@ export function Home() {
       content: [...response.content],
       totalPages: response.totalPages,
     })
+  }
+
+  function handleSelectEvent(evento) {
+    setEventSelected(evento)
   }
 
   async function handleDisableEvent(eventId) {
@@ -63,13 +68,26 @@ export function Home() {
     mapPages()
   }, [listEvent.totalPages])
 
+  useEffect(() => {
+    if (Object.keys(eventSelected).length > 0) return
+    const nextEvent = listEvent.content.reduce((prev, value) => {
+      if (!prev.data_evento) return value
+      const prevDate = new Date(prev.data_evento)
+      const valueDate = new Date(value.data_evento)
+      const now = Date.now()
+      if (valueDate > now && valueDate < prevDate) return value
+      return prev
+    }, {})
+    setEventSelected(nextEvent)
+  }, [listEvents.content, eventSelected])
+
   return (
     <div className="min-h-screen bg-zinc-900 bg-cover bg-no-repeat flex flex-col items-center basis">
       <Header />
       <main className="flex items-stretch justify-between container text-gray-200 mt-4 grow ">
         <section className="flex flex-col justify-around p-4 grow">
-          <h2 className="font-bold self-center text-xl">Ultimo Evento</h2>
-          <HomeInfoEvento />
+          <h2 className="font-bold self-center text-xl">Evento Selecionado</h2>
+          <HomeInfoEvento event={eventSelected} />
           <HomeTableUsers />
         </section>
 
@@ -81,7 +99,8 @@ export function Home() {
                 <EventoCard
                   key={evento.id}
                   evento={evento}
-                  handleDisableEvent={handleDisableEvent}
+                  handleDisableEvent={() => handleDisableEvent(evento.id)}
+                  handleSelectEvent={() => handleSelectEvent(evento)}
                 />
               ))}
           </div>
