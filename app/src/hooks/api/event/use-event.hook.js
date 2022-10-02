@@ -9,11 +9,13 @@ export function useEvent() {
   }
 
   async function listEvents(userId, page) {
-    return instance.get(`/evento/${userId}/${page}/${EVENT_SIZE_PAGEABLE_DEFAULT}`)
+    return instance.get(
+      `/evento/${userId}/${page}/${EVENT_SIZE_PAGEABLE_DEFAULT}`
+    )
   }
 
   async function alterAtivoEvent(userId, eventId) {
-    return instance.patch(`/evento/${userId}/alterAtivo`, {
+    return instance.put(`/evento/${userId}/alterAtivo`, {
       eventoId: eventId,
     })
   }

@@ -10,7 +10,7 @@ export function useHttp(baseURL, headers) {
   })
 
   function checkUnauthorized(error) {
-    if (error.response.status === UNAUTHORIZED) {
+    if (error.response?.status === UNAUTHORIZED) {
       setUserGlobal({})
     }
   }
@@ -45,21 +45,9 @@ export function useHttp(baseURL, headers) {
     }
   }
 
-  async function patch(url, data) {
-    try {
-      const response = await instance.patch(url, data)
-      return response.data
-    } catch (error) {
-      console.log(error)
-      checkUnauthorized(error)
-      throw error
-    }
-  }
-
   return {
     get,
     post,
     put,
-    patch,
   }
 }
