@@ -29,7 +29,7 @@ export function HomeInfoEvento({ event }) {
             <CopyIcon />
           </button>
           <a
-            href="https://bityli.com/lJjHshV"
+            href={event.link_convite}
             target="_blank"
             rel="noopener noreferrer"
           >
