@@ -31,4 +31,8 @@ routes.get('/evento/:eventoId/listarConfirmados', (request, response) =>
   EventController.listarConfirmados(request, response)
 )
 
+routes.post('/evento/:eventoId/confirmar', (request, response) =>
+  EventController.confirmarPresenca(request, response)
+)
+
 module.exports = routes
