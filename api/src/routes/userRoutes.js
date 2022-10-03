@@ -27,4 +27,8 @@ routes.put('/evento/:userId/alterAtivo', (request, response) =>
   EventController.alterAtivoEvento(request, response)
 )
 
+routes.get('/evento/:eventoId/listarConfirmados', (request, response) =>
+  EventController.listarConfirmados(request, response)
+)
+
 module.exports = routes

@@ -1,3 +1,3 @@
-const FRONT_URL = 'http://127.0.0.1:5173'
+const FRONT_URL = 'https://cjm.vercel.app'
 
 module.exports = FRONT_URL
