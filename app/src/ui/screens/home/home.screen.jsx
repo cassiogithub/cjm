@@ -49,14 +49,19 @@ export function Home() {
 
   useEffect(() => {
     async function getListEvent() {
-      setLoader(true)
-      const response = await listEvents(userGlobal.id, listEvent.atualPage)
-      setListEvent({
-        ...listEvent,
-        content: [...response.content],
-        totalPages: response.totalPages,
-      })
-      setLoader(false)
+      try {
+        setLoader(true)
+        const response = await listEvents(userGlobal.id, listEvent.atualPage)
+        setListEvent({
+          ...listEvent,
+          content: [...response.content],
+          totalPages: response.totalPages,
+        })
+        setLoader(false)
+      } catch (error) {
+        setLoader(false)
+        return
+      }
     }
     getListEvent()
   }, [listEvents, listEvent.atualPage])
