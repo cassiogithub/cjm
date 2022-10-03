@@ -44,10 +44,12 @@ export function HomeInfoEvento({ event }) {
 
   return (
     <>
-      {event.nome.length <= 0 ? (
+      {event.nome ? (
         renderEvent()
       ) : (
-        <h2> Nenhum evento encontrado </h2>
+        <h2 className="flex justify-center items-center">
+          Nenhum evento encontrado
+        </h2>
       )}
     </>
   )
