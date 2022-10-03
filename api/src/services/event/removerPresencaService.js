@@ -38,7 +38,7 @@ async function removerPresenca(request, response) {
       },
     },
   })
-
+  
   if (removed.count === 0) {
     return response
       .status(BAD_REQUEST)
