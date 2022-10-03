@@ -42,5 +42,5 @@ export function HomeInfoEvento({ event }) {
     )
   }
 
-  return <>{event ? renderEvent() : <h2> Nenhum evento encontrado </h2>}</>
+  return <>{event.nome ? renderEvent() : <h2> Nenhum evento encontrado </h2>}</>
 }
