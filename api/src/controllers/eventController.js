@@ -4,6 +4,7 @@ const listEventsPageable = require('../services/event/listEventsPageableService'
 const alterAtivoEvento = require('../services/event/alterAtivoEventoService')
 const listarConfirmados = require('../services/event/listarConfirmadosService')
 const confirmarPresenca = require('../services/event/confirmarPresencaService')
+const removerPresenca = require('../services/event/removerPresencaService')
 
 class EventController {
   createEvent(request, response) {
@@ -28,6 +29,10 @@ class EventController {
 
   confirmarPresenca(request, response) {
     return confirmarPresenca(request, response)
+  }
+
+  removerPresenca(request, response) {
+    return removerPresenca(request, response)
   }
 }
 

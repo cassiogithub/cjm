@@ -35,4 +35,8 @@ routes.post('/evento/:eventoId/confirmar', (request, response) =>
   EventController.confirmarPresenca(request, response)
 )
 
+routes.delete('/evento/:userId/:eventoId', (request, response) =>
+  EventController.removerPresenca(request, response)
+)
+
 module.exports = routes
