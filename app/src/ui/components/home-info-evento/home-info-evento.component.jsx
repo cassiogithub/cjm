@@ -24,7 +24,7 @@ export function HomeInfoEvento({ event }) {
           <p className="text-lg">{formatDate(event.data_evento)}</p>
         </li>
         <li>
-          <span className="text-sm">Link de cnvite</span>
+          <span className="text-sm">Link de convite</span>
           <p className="flex items-center gap-2">
             <button onClick={copyToClipboard}>
               <CopyIcon />

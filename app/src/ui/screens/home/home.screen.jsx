@@ -27,7 +27,7 @@ export function Home() {
       })
     } catch (error) {
       setLoader(false)
-      console.log(error)
+      return
     }
   }
 
