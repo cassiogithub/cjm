@@ -1,13 +1,16 @@
 # CJM BBQ
 
 ## Introdução
-    O presente projeto visa apresentar uma ferramenta para criação e organização de pequenos eventos, tendo como base o publico comum que através da nossa pesquisa apresenta dificuldade em organizar algum evento particular.
+    O presente projeto visa apresentar uma ferramenta para criação e organização de pequenos eventos, 
+    tendo como base o publico comum que através da nossa pesquisa apresenta dificuldade em organizar algum evento particular.
 
 ### Hipótese:
-    Supomos que hoje encontramos dificuldades para organizar um evento, com isso temos em mente a criação do aplicativo CJM.
+    Supomos que hoje encontramos dificuldades para organizar um evento,
+    com isso temos em mente a criação do aplicativo CJM.
 
 ## Metodologia
-        O desenvolvimento da aplicação se da a construção de um aplicativo web e mobile, onde usuários cadastrados podem criar eventos e distribuir links de maneira rápida e conclusiva.
+        O desenvolvimento da aplicação se da a construção de um aplicativo web e mobile, 
+        onde usuários cadastrados podem criar eventos e distribuir links de maneira rápida e conclusiva.
         Foi utilizado o modelo de arquitetura utilizado dentro do projeto Crescer da CWI Software.
     Os serviços de hospedagem se distribuem em: 
 
