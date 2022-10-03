@@ -18,13 +18,22 @@ model Usuario {
 }
 
 model Evento {
-  id           Int      @id(map: "pk_evento") @default(autoincrement())
-  nome         String   @db.VarChar(255)
-  local        String   @db.VarChar(255)
-  data_evento  DateTime @db.Timestamp()
-  link_convite String   @db.VarChar(100)
-  hash_evento  String   @db.VarChar(100)
-  usuario      Usuario  @relation(fields: [usuarioId], references: [id])
-  usuarioId    Int
-  ativo        Boolean  @default(true)
+  id               Int                 @id(map: "pk_evento") @default(autoincrement())
+  nome             String              @db.VarChar(255)
+  local            String              @db.VarChar(255)
+  data_evento      DateTime            @db.Timestamp()
+  link_convite     String              @db.VarChar(100)
+  hash_evento      String              @db.VarChar(100)
+  usuario          Usuario             @relation(fields: [usuarioId], references: [id])
+  usuarioId        Int
+  ativo            Boolean             @default(true)
+  listaConfirmados EventoConfirmados[]
+}
+
+model EventoConfirmados {
+  id       Int    @id(map: "pk_EventoConfirmados") @default(autoincrement())
+  nome     String @db.VarChar(255)
+  contato  String @db.VarChar(11)
+  evento   Evento @relation(fields: [eventoId], references: [id])
+  eventoId Int
 }
