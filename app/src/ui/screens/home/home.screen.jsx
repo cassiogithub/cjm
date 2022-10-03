@@ -18,12 +18,17 @@ export function Home() {
   const [pages, setPages] = useState([])
 
   async function handleSelectPage(page) {
-    const response = await listEvents(userGlobal.id, page)
-    setListEvent({
-      ...listEvent,
-      content: [...response.content],
-      totalPages: response.totalPages,
-    })
+    try {
+      const response = await listEvents(userGlobal.id, page)
+      setListEvent({
+        ...listEvent,
+        content: [...response.content],
+        totalPages: response.totalPages,
+      })
+    } catch (error) {
+      setLoader(false)
+      console.log(error)
+    }
   }
 
   function handleSelectEvent(evento) {
