@@ -26,7 +26,8 @@
 
         Para o frontend foi utilizado a biblioteca ReactJS na versão 18.2.0 para fins de estudo e avaliação da ferramenta.
 
-        Para o backend foi utilizado NodeJS na versão 16.16 para maior agilidade no desenvolvimento da aplicação, e por proximidade com a linguagem,
+        Para o backend foi utilizado NodeJS na versão 16.16 para maior agilidade no desenvolvimento da aplicação,
+        e por proximidade com a linguagem,
         também foi utilizado do ORM Prisma para controle e gerenciamento de banco de dados com motivo de maior desempenho e facilidade de uso.
 
         Para base de dados optamos por utilizar PostgreSQL na versão 14.4.
