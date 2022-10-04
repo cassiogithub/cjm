@@ -6,7 +6,7 @@ const {
 } = require('../../constants/http-status')
 
 async function removerPresenca(request, response) {
-  const userRemoved = parseInt(request.body.userRemoved)
+  const userRemoved = parseInt(request.params.userRemoved)
   const eventoId = parseInt(request.params.eventoId)
   const userId = parseInt(request.params.userId)
 
@@ -38,7 +38,7 @@ async function removerPresenca(request, response) {
       },
     },
   })
-  
+
   if (removed.count === 0) {
     return response
       .status(BAD_REQUEST)
