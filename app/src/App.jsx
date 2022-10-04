@@ -12,7 +12,7 @@ import { Loader } from './ui/components'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App overflow-hidden">
       <Routes>
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/cadastro" element={<CadastroScreen />} />
