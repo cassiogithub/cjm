@@ -1,5 +1,6 @@
 import './App.css'
 import {
+  BuscarEventoScreen,
   CadastroScreen,
   Home,
   LoginScreen,
@@ -28,6 +29,14 @@ function App() {
           element={
             <PrivateRoute>
               <NovoEvento />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/buscar-evento"
+          element={
+            <PrivateRoute>
+              <BuscarEventoScreen />
             </PrivateRoute>
           }
         />

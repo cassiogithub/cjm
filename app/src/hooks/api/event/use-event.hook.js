@@ -20,6 +20,10 @@ export function useEvent() {
     })
   }
 
+  async function getEvent(hashEvento) {
+    return instance.get(`/evento/${hashEvento}`)
+  }
+
   async function listConfirmed(eventId) {
     return instance.get(`/evento/${eventId}/listarConfirmados`)
   }
@@ -40,6 +44,7 @@ export function useEvent() {
       listConfirmed,
       confirmPresence,
       removePresence,
+      getEvent,
     }),
     []
   )
