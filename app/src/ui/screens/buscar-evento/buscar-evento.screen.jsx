@@ -50,7 +50,7 @@ export function BuscarEventoScreen() {
         </div>
 
         <div className="flex items-center justify-center w-2/4 border border-gray-200 rounded p-4 text-gray-200">
-          {event ? <InfoEvento event={event} /> : <h2> Agurdando busca ...</h2>}
+          {event ? <InfoEvento event={event} /> : <h2> Aguardando busca ...</h2>}
         </div>
       </main>
     </div>
