@@ -117,7 +117,7 @@ Tendo isso concluido, deve ser executado o seguinte comando
         "contato": "5136321151"
     }
 ```
-#### Confirmar presença em evento
+#### Remover presença em evento
 ```javascript
     DELETE: /evento/:userId/:eventoId
 
