@@ -2,13 +2,16 @@ import { useState } from 'react'
 import { EditEventForm, Header, InfoEvento } from '../../components'
 import { useEvent } from '../../../hooks/api/event/use-event.hook'
 import { useToastContext } from '../../../hooks/service/use-toast.hook'
-import { useLoader } from '../../../context'
+import { useLoader, useUserGlobal } from '../../../context'
 import editIcon from '../../../assets/edit.svg'
 import trashIcon from '../../../assets/trash.svg'
+import { useNavigate } from 'react-router-dom'
 
 export function BuscarEventoScreen() {
   const [, setLoader] = useLoader()
-  const { getEvent } = useEvent()
+  const [userGlobal] = useUserGlobal()
+  const navigate = useNavigate()
+  const { getEvent, editEvent: _editEvent, removeEvent } = useEvent()
   const addToast = useToastContext()
   const [search, setSearch] = useState('')
   const [event, setEvent] = useState({})
@@ -37,6 +40,45 @@ export function BuscarEventoScreen() {
 
   function handleEditEvent() {
     setEditEvent({ ...editEvent, active: true })
+  }
+
+  async function handleSubmitEditEvent() {
+    try {
+      setLoader(true)
+      const response = await _editEvent(
+        userGlobal.id,
+        editEvent.event.hashEvento,
+        {
+          nome: editEvent.event.nome,
+          local: editEvent.event.local,
+          dataEvento: editEvent.event.dataEvento,
+        }
+      )
+      setEvent({ ...event, ...response })
+      setEditEvent({ ...editEvent, active: false })
+      setLoader(false)
+      addToast('Evento editado com sucesso!')
+    } catch (error) {
+      setLoader(false)
+      addToast(error.response.data, true)
+      return
+    }
+  }
+
+  async function handleDeleteEvent() {
+    try {
+      setLoader(true)
+      await removeEvent(userGlobal.id, editEvent.event.hashEvento)
+      addToast('Evento removido com sucesso')
+      setEditEvent({ ...editEvent, active: false })
+      setEvent({})
+      navigate('/')
+      setLoader(false)
+    } catch (error) {
+      setLoader(false)
+      addToast(error.response.data, true)
+      return
+    }
   }
 
   function handleCancelEdit() {
@@ -81,6 +123,7 @@ export function BuscarEventoScreen() {
                 handleCancelEdit={handleCancelEdit}
                 handleFormChange={handleFormChange}
                 handleFormSubmit={handleFormSubmit}
+                handleSubmitEditEvent={handleSubmitEditEvent}
               />
             </div>
           </div>
@@ -101,6 +144,7 @@ export function BuscarEventoScreen() {
                   src={trashIcon}
                   alt="trashicon"
                   className="hover:cursor-pointer"
+                  onClick={handleDeleteEvent}
                 />
               </div>
             </div>

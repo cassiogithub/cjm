@@ -5,6 +5,7 @@ export function EditEventForm({
   editEvent,
   handleFormChange,
   handleCancelEdit,
+  handleSubmitEditEvent
 }) {
   return (
     <form
@@ -34,7 +35,7 @@ export function EditEventForm({
         labelClass="w-full"
       />
       <div className="flex w-full justify-between items-center mt-2">
-        <Button value="Salvar" secondary={true} />
+        <Button value="Salvar" secondary={true} onClick={handleSubmitEditEvent}/>
         <Button value="Cancelar" onClick={handleCancelEdit} />
       </div>
     </form>

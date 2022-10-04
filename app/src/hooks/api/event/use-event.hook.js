@@ -20,6 +20,14 @@ export function useEvent() {
     })
   }
 
+  async function editEvent(userId, hashEvento, event) {
+    return instance.put(`/evento/${userId}/${hashEvento}/editar`, {
+      nome: event.nome,
+      local: event.local,
+      dataEvento: event.dataEvento,
+    })
+  }
+
   async function getEvent(hashEvento) {
     return instance.get(`/evento/${hashEvento}`)
   }
@@ -36,6 +44,10 @@ export function useEvent() {
     return instance._delete(`/evento/${userId}/${eventId}/${userRemoved}`)
   }
 
+  async function removeEvent(userId, hashEvento) {
+    return instance._delete(`/evento/removeEvento/${userId}/${hashEvento}`)
+  }
+
   return useMemo(
     () => ({
       createEvent,
@@ -44,7 +56,9 @@ export function useEvent() {
       listConfirmed,
       confirmPresence,
       removePresence,
+      removeEvent,
       getEvent,
+      editEvent,
     }),
     []
   )
