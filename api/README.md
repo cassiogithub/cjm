@@ -119,7 +119,7 @@ Tendo isso concluido, deve ser executado o seguinte comando
 ```
 #### Confirmar presença em evento
 ```javascript
-    POST: /evento/:userId/:eventoId
+    DELETE: /evento/:userId/:eventoId
 
     body:{
         "userRemoved": 1
