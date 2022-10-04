@@ -29,4 +29,14 @@ Tendo isso concluido, deve ser executado o seguinte comando
   - Este comando iniciará o servidor nodemon localmente.
 
 
+### Caso necessite criar o schema do banco localmente, faça os seguintes processos:
+
+- npx prisma migrate dev --name <Aqui você irá definir o nome da migration>
+
+1. Este comando cria um novo arquivo de migração SQL para esta migração
+2. Ele executa o arquivo de migração SQL no banco de dados
+
+
+
+
 
