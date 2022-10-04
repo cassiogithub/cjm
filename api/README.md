@@ -36,6 +36,96 @@ Tendo isso concluido, deve ser executado o seguinte comando
 1. Este comando cria um novo arquivo de migração SQL para esta migração
 2. Ele executa o arquivo de migração SQL no banco de dados
 
+## Rotas
+
+### Usuário:
+
+#### Criar novo usuário
+```javascript
+    POST: /usuarios
+
+    body: {
+    "nome":"cassio rodrigues",
+    "email":"moacir@teste.com",
+    "dataNascimento":"1996-03-03",
+    "senha":"123",
+    "urlImagem":"https://avatars.githubusercontent.com/u/17843839?v=4"
+    }
+```
+
+
+#### Login
+```javascript
+    POST: /login
+
+    body: {
+    "email":"moacir@teste.com",
+    "senha": "123"
+    }
+```
+
+### Eventos:
+
+#### Criar Evento
+```javascript
+    POST: /evento/:usuarioId
+
+    body: {
+        "nome": "Churrasco na minha casa",
+        "local": "Avenida Julio Renner 0000",
+        "dataEvento": "2022-10-03 22:00:00"
+    }
+```
+
+#### Buscar Evento
+```javascript
+    GET: /evento
+
+    body: {
+        "hashEvento": "36c96043cb9277431d1c"
+    }
+```
+
+#### Listar eventos (paginação)
+```javascript
+    GET: /evento/:userId/:page/:size
+```
+
+#### Alterar disponibilidade evento
+
+```javascript
+    PUT: /evento/:userId/alterAtivo
+
+     body: {
+        "eventoId": 1
+    }
+```
+
+### Presença em eventos:
+
+#### Listar usuários por evento
+```javascript
+    GET: /evento/:eventoId/listarConfirmados
+```
+
+#### Confirmar presença em evento
+```javascript
+    POST: /evento/:eventoId/confirmar
+
+    body: {
+        "nome": "Pedro Motta",
+        "contato": "5136321151"
+    }
+```
+#### Confirmar presença em evento
+```javascript
+    POST: /evento/:userId/:eventoId
+
+    body:{
+        "userRemoved": 1
+    }
+```
+
 
 
 
