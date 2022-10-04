@@ -20,6 +20,10 @@ export function HomeInfoEvento({ event }) {
           <p className="text-lg">{event.local}</p>
         </li>
         <li>
+          <span className="text-sm">Hash de busca</span>
+          <p className="text-lg">{event.hash_evento}</p>
+        </li>
+        <li>
           <span className="text-sm">Data/Hora</span>
           <p className="text-lg">{formatDate(event.data_evento)}</p>
         </li>
