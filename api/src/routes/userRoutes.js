@@ -35,6 +35,10 @@ routes.post('/evento/:eventoId/confirmar', (request, response) =>
   EventController.confirmarPresenca(request, response)
 )
 
+routes.delete('/evento/removeEvento/:userId/:eventoHash/', (request, response) =>
+  EventController.removerEvento(request, response)
+)
+
 routes.delete('/evento/:userId/:eventoId/:userRemoved', (request, response) =>
   EventController.removerPresenca(request, response)
 )
