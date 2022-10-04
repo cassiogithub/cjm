@@ -27,6 +27,10 @@ routes.put('/evento/:userId/alterAtivo', (request, response) =>
   EventController.alterAtivoEvento(request, response)
 )
 
+routes.put('/evento/:userId/:hashEvento/editar', (request, response) =>
+  EventController.editarEvento(request, response)
+)
+
 routes.get('/evento/:eventoId/listarConfirmados', (request, response) =>
   EventController.listarConfirmados(request, response)
 )
@@ -35,8 +39,9 @@ routes.post('/evento/:eventoId/confirmar', (request, response) =>
   EventController.confirmarPresenca(request, response)
 )
 
-routes.delete('/evento/removeEvento/:userId/:eventoHash/', (request, response) =>
-  EventController.removerEvento(request, response)
+routes.delete(
+  '/evento/removeEvento/:userId/:eventoHash/',
+  (request, response) => EventController.removerEvento(request, response)
 )
 
 routes.delete('/evento/:userId/:eventoId/:userRemoved', (request, response) =>

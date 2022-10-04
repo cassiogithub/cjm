@@ -6,6 +6,7 @@ const listarConfirmados = require('../services/event/listarConfirmadosService')
 const confirmarPresenca = require('../services/event/confirmarPresencaService')
 const removerPresenca = require('../services/event/removerPresencaService')
 const removeEvento = require('../services/event/removeEventoService')
+const editarEvento = require('../services/event/editarEventoService')
 
 class EventController {
   createEvent(request, response) {
@@ -24,6 +25,10 @@ class EventController {
     return alterAtivoEvento(request, response)
   }
 
+  editarEvento(request, response) {
+    return editarEvento(request, response)
+  }
+
   listarConfirmados(request, response) {
     return listarConfirmados(request, response)
   }
@@ -33,7 +38,6 @@ class EventController {
   }
 
   removerEvento(request, response) {
-    console.log('to na controller')
     return removeEvento(request, response)
   }
 
