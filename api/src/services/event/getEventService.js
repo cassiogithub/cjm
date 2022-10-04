@@ -3,7 +3,7 @@ const { NOT_FOUND, OK } = require('../../constants/http-status')
 const getEventResponse = require('../../mapper/getEventResponse')
 
 async function getEvent(request, response) {
-  const { hashEvento } = request.body
+  const { hashEvento } = request.params
 
   const event = await prismaClient.evento.findFirst({
     where: {
