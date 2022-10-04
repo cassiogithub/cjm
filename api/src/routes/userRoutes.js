@@ -25,8 +25,7 @@ routes.get('/evento/:userId/:page/:size', (request, response) =>
 
 routes.put('/evento/:userId/alterAtivo', (request, response) =>
   EventController.alterAtivoEvento(request, response)
-)cd ..
-
+)
 
 routes.get('/evento/:eventoId/listarConfirmados', (request, response) =>
   EventController.listarConfirmados(request, response)
