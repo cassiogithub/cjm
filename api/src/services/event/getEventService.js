@@ -11,15 +11,15 @@ async function getEvent(request, response) {
     },
   })
 
+  if (!event) {
+    return response.status(NOT_FOUND).send('Hash informado não é valido!')
+  }
+
   const user = await prismaClient.usuario.findUnique({
     where: {
       id: event.usuarioId,
     },
   })
-
-  if (!event) {
-    return response.status(NOT_FOUND).send('Hash informado não é valido!')
-  }
 
   const eventResponse = getEventResponse(event, user)
 
