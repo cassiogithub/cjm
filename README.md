@@ -9,28 +9,28 @@
     com isso temos em mente a criação do aplicativo CJM.
 
 ## Metodologia
-        O desenvolvimento da aplicação se da a construção de um aplicativo web e mobile, 
-        onde usuários cadastrados podem criar eventos e distribuir links de maneira rápida e conclusiva.
-        Foi utilizado o modelo de arquitetura utilizado dentro do projeto Crescer da CWI Software.
-    Os serviços de hospedagem se distribuem em: 
+O desenvolvimento da aplicação se da a construção de um aplicativo web e mobile, 
+onde usuários cadastrados podem criar eventos e distribuir links de maneira rápida e conclusiva.
+Foi utilizado o modelo de arquitetura utilizado dentro do projeto Crescer da CWI Software.
+Os serviços de hospedagem se distribuem em: 
 
-    1. Backend: Heroku
-    2. Frontend: Vercel
-    3. Banco de dados: ElephantSQL
-    4. Repositório: Github
+1. Backend: Heroku
+2. Frontend: Vercel
+3. Banco de dados: ElephantSQL
+4. Repositório: Github
 
-        A plataforma conta com autenticação e criptografia de senhas no padrão SHA-256 utilizando a biblioteca BCript 
-        assim garantindo a privacidade de senhas cadastradas.
+A plataforma conta com autenticação e criptografia de senhas no padrão SHA-256 utilizando a biblioteca BCript 
+assim garantindo a privacidade de senhas cadastradas.
 
-        Após avaliação das ferramentas a serem utilizadas em desenvolvimento, foi definido por Cássio Rodrigues responsável pela aplicação que:
+Após avaliação das ferramentas a serem utilizadas em desenvolvimento, foi definido por Cássio Rodrigues responsável pela aplicação que:
 
-        Para o frontend foi utilizado a biblioteca ReactJS na versão 18.2.0 para fins de estudo e avaliação da ferramenta.
+Para o frontend foi utilizado a biblioteca ReactJS na versão 18.2.0 para fins de estudo e avaliação da ferramenta.
 
-        Para o backend foi utilizado NodeJS na versão 16.16 para maior agilidade no desenvolvimento da aplicação,
-        e por proximidade com a linguagem,
-        também foi utilizado do ORM Prisma para controle e gerenciamento de banco de dados com motivo de maior desempenho e facilidade de uso.
+Para o backend foi utilizado NodeJS na versão 16.16 para maior agilidade no desenvolvimento da aplicação,
+e por proximidade com a linguagem,
+também foi utilizado do ORM Prisma para controle e gerenciamento de banco de dados com motivo de maior desempenho e facilidade de uso.
 
-        Para base de dados optamos por utilizar PostgreSQL na versão 14.4.
+Para base de dados optamos por utilizar PostgreSQL na versão 14.4.
 
 ## Funcionalidades
 
