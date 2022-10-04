@@ -20,11 +20,26 @@ export function useEvent() {
     })
   }
 
+  async function listConfirmed(eventId) {
+    return instance.get(`/evento/${eventId}/listarConfirmados`)
+  }
+
+  async function confirmPresence(eventId, presence) {
+    return instance.post(`/evento/${eventId}/listarConfirmados`, presence)
+  }
+
+  async function removePresence(userId, eventId, userRemoved) {
+    return instance._delete(`/evento/${userId}/${eventId}/${userRemoved}`)
+  }
+
   return useMemo(
     () => ({
       createEvent,
       listEvents,
       alterAtivoEvent,
+      listConfirmed,
+      confirmPresence,
+      removePresence,
     }),
     []
   )

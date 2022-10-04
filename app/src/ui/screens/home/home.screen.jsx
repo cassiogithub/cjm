@@ -12,9 +12,11 @@ import {
 export function Home() {
   const [userGlobal] = useUserGlobal()
   const [, setLoader] = useLoader()
-  const { listEvents, alterAtivoEvent } = useEvent()
+  const { listEvents, alterAtivoEvent, listConfirmed, removePresence } =
+    useEvent()
   const [listEvent, setListEvent] = useState(BASE_LIST_EVENT)
   const [eventSelected, setEventSelected] = useState({})
+  const [participants, setParticipants] = useState([])
   const [pages, setPages] = useState([])
 
   async function handleSelectPage(page) {
@@ -27,6 +29,23 @@ export function Home() {
       })
     } catch (error) {
       setLoader(false)
+      return
+    }
+  }
+
+  async function handleRemovePresence(userRemoved) {
+    try {
+      setLoader(true)
+      console.log(userGlobal.id, eventSelected.id, userRemoved)
+      await removePresence(userGlobal.id, eventSelected.id, userRemoved)
+      const participantRemoved = participants.filter(
+        (participant) => participant.id !== userRemoved
+      )
+      setParticipants(participantRemoved)
+      setLoader(false)
+    } catch (error) {
+      setLoader(false)
+      console.log(error)
       return
     }
   }
@@ -91,6 +110,22 @@ export function Home() {
     setEventSelected(nextEvent)
   }, [listEvents.content, eventSelected])
 
+  useEffect(() => {
+    if (!eventSelected.id) return
+    async function getEventParticipants() {
+      try {
+        setLoader(true)
+        const response = await listConfirmed(eventSelected.id)
+        setParticipants(response)
+        setLoader(false)
+      } catch (error) {
+        setLoader(false)
+        return
+      }
+    }
+    getEventParticipants()
+  }, [eventSelected])
+
   return (
     <div className="min-h-screen bg-zinc-900 bg-cover bg-no-repeat flex flex-col items-center basis">
       <Header />
@@ -98,7 +133,10 @@ export function Home() {
         <section className="flex flex-col justify-around p-4 grow">
           <h2 className="font-bold self-center text-xl">Evento Selecionado</h2>
           <HomeInfoEvento event={eventSelected} />
-          <HomeTableUsers />
+          <HomeTableUsers
+            participants={participants}
+            handleRemovePresence={handleRemovePresence}
+          />
         </section>
 
         <section className="flex flex-col p-4 border border-gray-200 rounded my-4 grow justify-between">

@@ -45,9 +45,20 @@ export function useHttp(baseURL, headers) {
     }
   }
 
+  async function _delete(url, data) {
+    try {
+      const response = await instance.delete(url, data)
+      return response.data
+    } catch (error) {
+      checkUnauthorized(error)
+      throw error
+    }
+  }
+
   return {
     get,
     post,
     put,
+    _delete,
   }
 }

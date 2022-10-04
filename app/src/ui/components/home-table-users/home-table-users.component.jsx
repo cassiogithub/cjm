@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function HomeTableUsers() {
+export function HomeTableUsers({ participants, handleRemovePresence }) {
   const TABLE_HEADER_ITEM = ['Nome', 'Situação', 'Contato']
 
   return (
@@ -19,7 +19,6 @@ export function HomeTableUsers() {
                   {value}
                 </th>
               ))}
-
               <th
                 scope="col"
                 className="px-6 py-3 text-xs font-bold text-left text-zinc-900 uppercase"
@@ -29,12 +28,33 @@ export function HomeTableUsers() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            <tr>
-              <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">Cássio</td>
-              <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">Confirmado</td>
-              <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">51 980637209</td>
-              <td className="px-6 py-4 text-sm text-red-700 whitespace-nowrap">Excluir</td>
-            </tr>
+            {participants.length > 0 ? (
+              participants.map((participant) => (
+                <tr key={participant.id}>
+                  <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    {participant.nome}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    Confirmado
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                    {participant.contato}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-red-700 whitespace-nowrap">
+                    <button
+                      className="hover:brightness-200"
+                      onClick={() => handleRemovePresence(participant.id)}
+                    >
+                      Excluir
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr className="h-12 flex items-center justify-center w-full">
+                <td colSpan="4">Ops ainda não temos confirmados...</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
