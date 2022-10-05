@@ -37,7 +37,10 @@ export function useEvent() {
   }
 
   async function confirmPresence(eventId, presence) {
-    return instance.post(`/evento/${eventId}/listarConfirmados`, presence)
+    return instance.post(`/evento/${eventId}/confirmar`, {
+      nome: presence.nome,
+      contato: presence.contato,
+    })
   }
 
   async function removePresence(userId, eventId, userRemoved) {

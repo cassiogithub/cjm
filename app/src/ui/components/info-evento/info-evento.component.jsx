@@ -1,8 +1,8 @@
 import { formatDate } from '../../../functions'
 
-export function InfoEvento({ event }) {
+export function InfoEvento({ event, textWhite }) {
   return (
-    <ul className="flex flex-col gap-2">
+    <ul className={`flex flex-col gap-2 ${textWhite && 'text-gray-200'}`}>
       <li>
         <span className="text-sm">Evento</span>
         <p className="text-lg">{event.nome}</p>

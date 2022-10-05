@@ -9,6 +9,7 @@ import {
 } from './ui/screens'
 import { Routes, Route } from 'react-router-dom'
 import { Loader } from './ui/components'
+import { ConviteScreen } from './ui/screens/convite/convite.screen'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/cadastro" element={<CadastroScreen />} />
+        <Route path="/convite/:hashEvento" element={<ConviteScreen />} />
         <Route
           path="/"
           element={
