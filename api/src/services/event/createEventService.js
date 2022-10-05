@@ -2,12 +2,16 @@ const prismaClient = require('../../database/prismaClient')
 const crypto = require('crypto')
 const shortUrl = require('../core/shortUrl-cdpt-Service')
 const FRONT_URL = require('../../constants/front_url')
-const { NOT_FOUND, BAD_REQUEST, CREATED } = require('../../constants/http-status')
+const {
+  NOT_FOUND,
+  BAD_REQUEST,
+  CREATED,
+} = require('../../constants/http-status')
 
 async function createEvent(request, response) {
   const { nome, local, dataEvento } = request.body
   const { userId } = request.params
-  
+
   if (!nome || !local || !dataEvento || !userId) {
     return response
       .status(BAD_REQUEST)
@@ -25,8 +29,10 @@ async function createEvent(request, response) {
   }
 
   const randomHash = crypto.randomBytes(10).toString('hex')
-  // isso aqui demora uns 2 segundos pra responder **api gratuita é osso ** 
-  const shortedUrl = await shortUrl(`${FRONT_URL}/convite/${randomHash}`)
+  // isso aqui demora uns 2 segundos pra responder **api gratuita é osso **
+  const shortedUrl = await shortUrl(
+    `${FRONT_URL}/convite?hashEvento=${randomHash}`
+  )
   const event = await prismaClient.evento.create({
     data: {
       nome: nome,

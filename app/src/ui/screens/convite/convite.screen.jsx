@@ -9,13 +9,14 @@ import {
 import { useEvent } from '../../../hooks/api'
 import { useToastContext } from '../../../hooks/service/use-toast.hook'
 import { useLoader, useUserGlobal } from '../../../context'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { BASE_PRESENCE } from '../../../constants'
 
 export function ConviteScreen() {
   const { getEvent, confirmPresence } = useEvent()
-  const { hashEvento } = useParams()
   const [globalUser] = useUserGlobal()
+  const [searchParams] = useSearchParams()
+  const hashEvento = searchParams.get('hashEvento')
   const addToast = useToastContext()
   const navigate = useNavigate()
   const [, setLoader] = useLoader()
@@ -38,7 +39,6 @@ export function ConviteScreen() {
     }
     getEventData()
   }, [getEvent])
-
   async function handleConfirmPresence() {
     try {
       await confirmPresence(event.id, presence)
