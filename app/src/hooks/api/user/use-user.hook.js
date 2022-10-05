@@ -9,7 +9,7 @@ export function useUser() {
   }
 
   async function loginUser(login) {
-    return instance.post('/login', login)
+    return instance.post('/usuarios/login', login)
   }
 
   return useMemo(

@@ -3,10 +3,10 @@ import { UNAUTHORIZED } from '../../../constants'
 import axios from 'axios'
 
 export function useHttp(baseURL, headers) {
-  const [, setUserGlobal] = useUserGlobal()
+  const [userGlobal, setUserGlobal] = useUserGlobal()
   const instance = axios.create({
     baseURL,
-    headers,
+    headers: { authorization: `Bearer ${userGlobal.token}`, ...headers },
   })
 
   function checkUnauthorized(error) {
