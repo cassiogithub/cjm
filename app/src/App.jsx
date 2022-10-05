@@ -16,8 +16,8 @@ function App() {
     <div className="App overflow-hidden">
       <Routes>
         <Route path="/login" element={<LoginScreen />} />
-        <Route path="/cadastro" element={<CadastroScreen />} />
         <Route path="/convite" element={<ConviteScreen />} />
+        <Route path="/cadastro" element={<CadastroScreen />} />
         <Route
           path="/"
           element={
