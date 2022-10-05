@@ -31,7 +31,7 @@ async function createEvent(request, response) {
   const randomHash = crypto.randomBytes(10).toString('hex')
   // isso aqui demora uns 2 segundos pra responder **api gratuita é osso **
   const shortedUrl = await shortUrl(
-    `${FRONT_URL}/convite?hashEvento=${randomHash}`
+    `${FRONT_URL}/convite?hashEvento=${randomHash.toString()}`
   )
   const event = await prismaClient.evento.create({
     data: {
