@@ -1,9 +1,14 @@
-import { useState } from 'react'
-import { Button, Header, InfoEvento, InputTextGroup } from '../../components'
+import { useState, useEffect } from 'react'
+import {
+  Button,
+  Header,
+  HeaderSecondary,
+  InfoEvento,
+  InputTextGroup,
+} from '../../components'
 import { useEvent } from '../../../hooks/api'
 import { useToastContext } from '../../../hooks/service/use-toast.hook'
 import { useLoader, useUserGlobal } from '../../../context'
-import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { BASE_PRESENCE } from '../../../constants'
 
@@ -56,7 +61,8 @@ export function ConviteScreen() {
 
   return (
     <div className="min-h-screen bg-zinc-900 bg-cover bg-no-repeat flex flex-col items-center basis-full">
-      <Header />
+      {globalUser.token ? <Header /> : <HeaderSecondary />}
+
       <main className="flex container justify-between items-stretch mt-4 grow gap-3">
         <div className="flex justify-center items-center basis-full">
           <div
