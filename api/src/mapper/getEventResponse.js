@@ -1,5 +1,6 @@
 function getEventResponse(event, user) {
   return {
+    id: event.id,
     nome: event.nome,
     local: event.local,
     dataEvento: event.data_evento,
