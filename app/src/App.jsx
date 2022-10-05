@@ -42,7 +42,6 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="*" element={<LoginScreen />} />
       </Routes>
       <Loader />
     </div>
