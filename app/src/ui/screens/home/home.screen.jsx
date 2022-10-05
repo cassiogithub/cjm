@@ -36,7 +36,6 @@ export function Home() {
   async function handleRemovePresence(userRemoved) {
     try {
       setLoader(true)
-      console.log(userGlobal.id, eventSelected.id, userRemoved)
       await removePresence(userGlobal.id, eventSelected.id, userRemoved)
       const participantRemoved = participants.filter(
         (participant) => participant.id !== userRemoved
@@ -45,7 +44,7 @@ export function Home() {
       setLoader(false)
     } catch (error) {
       setLoader(false)
-      console.log(error)
+      addToast(error.response.data)
       return
     }
   }

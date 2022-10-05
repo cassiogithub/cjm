@@ -33,14 +33,13 @@ export function ConviteScreen() {
       } catch (error) {
         setLoader(false)
         addToast(`${error.response.data}, você foi redirecionado!`, true)
-        console.log(error)
-        // navigate('/')
+        navigate('/')
         return
       }
     }
     getEventData()
   }, [getEvent])
-  
+
   async function handleConfirmPresence() {
     try {
       await confirmPresence(event.id, presence)
