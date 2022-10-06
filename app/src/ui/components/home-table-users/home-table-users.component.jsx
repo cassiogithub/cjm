@@ -1,5 +1,5 @@
 import React from 'react'
-
+import trashIcon from '../../../assets/trash.svg'
 export function HomeTableUsers({ participants, handleRemovePresence }) {
   const TABLE_HEADER_ITEM = ['Nome', 'Situação', 'Contato']
 
@@ -21,7 +21,7 @@ export function HomeTableUsers({ participants, handleRemovePresence }) {
               ))}
               <th
                 scope="col"
-                className="mobile:px-1 mobile:py-1 px-6 py-3 text-xs font-bold text-left text-zinc-900 uppercase"
+                className="flex items-center justify-center mobile:px-1 mobile:py-1 px-6 py-3 text-xs font-bold text-left text-zinc-900 uppercase"
               >
                 Excluir
               </th>
@@ -40,12 +40,12 @@ export function HomeTableUsers({ participants, handleRemovePresence }) {
                   <td className="mobile:px-1 mobile:py-1 px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                     {participant.contato}
                   </td>
-                  <td className="mobile:px-1 mobile:py-1 px-6 py-4 text-sm text-red-700 whitespace-nowrap">
+                  <td className="flex items-center justify-center mobile:px-1 mobile:py-1 px-6 py-4 text-sm text-red-700 whitespace-nowrap">
                     <button
                       className="hover:brightness-200 mobile:px-2 mobile:py-1"
                       onClick={() => handleRemovePresence(participant.id)}
                     >
-                      Excluir
+                      <img src={trashIcon} alt="trash icon" />
                     </button>
                   </td>
                 </tr>
