@@ -59,7 +59,7 @@ export function LoginScreen() {
           <InputTextGroup
             name="senha"
             value={login.senha}
-            label="senha"
+            label="Senha"
             onChange={handleChange}
             type="password"
             labelClass="desktop:w-full"

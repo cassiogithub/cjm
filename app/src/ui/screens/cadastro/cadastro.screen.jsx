@@ -78,7 +78,7 @@ export function CadastroScreen() {
           <InputTextGroup
             name="senha"
             value={cadastro.senha}
-            label="senha"
+            label="Senha"
             onChange={handleChange}
             type="password"
             labelClass="desktop:w-full"
