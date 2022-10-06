@@ -5,11 +5,11 @@ export function EditEventForm({
   editEvent,
   handleFormChange,
   handleCancelEdit,
-  handleSubmitEditEvent
+  handleSubmitEditEvent,
 }) {
   return (
     <form
-      className="flex flex-col items-center bg-zinc-900 py-6 px-4 rounded-xl w-full gap-3 text-zinc-900"
+      className="flex flex-col items-center bg-zinc-900 py-6 px-4 mobile:px-1 rounded-xl w-full gap-3 text-zinc-900 mobile:items-stretch"
       onSubmit={handleFormSubmit}
     >
       <InputTextGroup
@@ -35,7 +35,11 @@ export function EditEventForm({
         labelClass="w-full"
       />
       <div className="flex w-full justify-between items-center mt-2">
-        <Button value="Salvar" secondary={true} onClick={handleSubmitEditEvent}/>
+        <Button
+          value="Salvar"
+          secondary={true}
+          onClick={handleSubmitEditEvent}
+        />
         <Button value="Cancelar" onClick={handleCancelEdit} />
       </div>
     </form>

@@ -97,8 +97,8 @@ export function BuscarEventoScreen() {
   return (
     <div className="min-h-screen bg-zinc-900 bg-cover bg-no-repeat flex flex-col items-center basis-full">
       <Header />
-      <main className="container flex flex-col items-center mt-4 grow gap-4">
-        <div className="flex h-8 rounded w-2/4 mt-4">
+      <main className="container flex flex-col items-center mt-4 grow gap-4 mobile:p-2">
+        <div className="flex h-8 rounded w-2/4 mt-4 mobile:w-full">
           <input
             type="text"
             name="search"
@@ -116,8 +116,8 @@ export function BuscarEventoScreen() {
         </div>
 
         {editEvent.active && (
-          <div className="flex items-center justify-center w-2/4 border border-gray-200 rounded p-4 text-gray-200">
-            <div className="flex justify-between items-start w-full ">
+          <div className="flex items-center justify-center w-2/4  border border-gray-200 rounded p-4 mobile:px-2 text-gray-200 mobile:w-full">
+            <div className="flex justify-between items-start w-full">
               <EditEventForm
                 editEvent={editEvent}
                 handleCancelEdit={handleCancelEdit}
@@ -129,7 +129,7 @@ export function BuscarEventoScreen() {
           </div>
         )}
 
-        <div className="flex items-center justify-center w-2/4 border border-gray-200 rounded p-4 text-gray-200">
+        <div className="flex items-center justify-center w-2/4 mobile:w-full border border-gray-200 rounded p-4 text-gray-200">
           {event.nome ? (
             <div className="flex justify-between items-start w-full ">
               <InfoEvento event={event} />
