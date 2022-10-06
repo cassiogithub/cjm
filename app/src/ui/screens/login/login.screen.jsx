@@ -38,13 +38,13 @@ export function LoginScreen() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-900 bg-cover bg-no-repeat flex items-center justify-center">
-      <div className="w-6/12 h-screen flex items-center justify-center">
+    <div className="min-h-screen bg-zinc-900 bg-cover bg-no-repeat flex items-center justify-center mobile:flex-col-reverse">
+      <div className="w-6/12 h-screen flex items-center justify-center mobile:w-auto">
         <AboutUs />
       </div>
-      <div className="w-6/12 h-screen bg-gray-200 flex justify-center items-center">
+      <div className="w-6/12 h-screen bg-gray-200 flex justify-center items-center mobile:w-full mobile:h-[80vh]">
         <form
-          className="flex flex-col items-center bg-zinc-900 py-6 px-4 rounded-xl w-8/12 gap-3"
+          className="flex flex-col items-center bg-zinc-900 py-6 px-4 rounded-xl w-8/12 gap-3 mobile:w-5/6"
           onSubmit={handleSubmit}
         >
           <InputTextGroup
@@ -53,6 +53,7 @@ export function LoginScreen() {
             label="Email"
             onChange={handleChange}
             type="email"
+            labelClass="desktop:w-full"
           />
 
           <InputTextGroup
@@ -61,13 +62,20 @@ export function LoginScreen() {
             label="senha"
             onChange={handleChange}
             type="password"
+            labelClass="desktop:w-full"
           />
 
-          <div className="flex justify-between items-center w-8/12 mt-4">
-            <Button value="Login" secondary={true} onClick={handleLogin} />
+          <div className="flex justify-between items-center w-8/12 mt-4 desktop:flex-col gap-2 desktop:w-full ">
+            <Button
+              value="Login"
+              secondary={true}
+              onClick={handleLogin}
+              className="desktop:w-full"
+            />
             <Button
               value="Cadastrar-se"
               onClick={() => navigate('/cadastro')}
+              className="desktop:w-full"
             />
           </div>
         </form>
