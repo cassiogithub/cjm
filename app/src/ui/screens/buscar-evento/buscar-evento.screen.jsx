@@ -103,13 +103,13 @@ export function BuscarEventoScreen() {
             type="text"
             name="search"
             className="outline-none p-2 rounded-l-sm w-full"
-            placeholder="Informe a hash de evento"
+            placeholder="Informe o código de evento"
             onChange={handleChange}
             value={search}
           />
           <button
             onClick={handleGetEvent}
-            className="bg-gray-200 flex items-center justify-center p-4 font-semibold hover:brightness-110 rounded-r-sm"
+            className="bg-gray-200 flex items-center justify-center p-4 font-semibold hover:brightness-110 rounded-r-sm border-l-[1px] border-zinc-900"
           >
             Buscar
           </button>

@@ -3,9 +3,9 @@ import { formatDate } from '../../../functions'
 import { useToastContext } from '../../../hooks/service'
 export function HomeInfoEvento({ event }) {
   const addToast = useToastContext()
-  function copyToClipboard() {
-    navigator.clipboard.writeText(event.link_convite)
-    addToast('Link copiado com sucesso!')
+  function copyToClipboard(copy, message) {
+    navigator.clipboard.writeText(copy)
+    addToast(message)
   }
 
   function renderEvent() {
@@ -24,8 +24,20 @@ export function HomeInfoEvento({ event }) {
           </p>
         </li>
         <li>
-          <span className="text-sm">Hash de busca</span>
-          <p className="text-lg">{event.hash_evento}</p>
+          <span className="text-sm">Código de busca</span>
+          <p className="text-lg flex items-center gap-2">
+            <button
+              onClick={() =>
+                copyToClipboard(
+                  event.hash_evento,
+                  'Código copiado com sucesso!'
+                )
+              }
+            >
+              <CopyIcon />
+            </button>
+            {event.hash_evento}
+          </p>
         </li>
         <li>
           <span className="text-sm">Data/Hora</span>
@@ -34,7 +46,11 @@ export function HomeInfoEvento({ event }) {
         <li>
           <span className="text-sm">Link de convite</span>
           <p className="flex items-center gap-2">
-            <button onClick={copyToClipboard}>
+            <button
+              onClick={() =>
+                copyToClipboard(event.link_convite, 'Link copiado com sucesso!')
+              }
+            >
               <CopyIcon />
             </button>
             <a
