@@ -43,13 +43,13 @@ export function CadastroScreen() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-900 bg-cover bg-no-repeat flex items-center justify-center">
-      <div className="w-6/12 h-screen flex items-center justify-center">
+    <div className="min-h-screen bg-zinc-900 bg-cover bg-no-repeat flex items-center justify-center mobile:flex-col-reverse">
+      <div className="w-6/12 h-screen flex items-center justify-center mobile:w-full">
         <AboutUs />
       </div>
-      <div className="w-6/12 h-screen bg-gray-200 flex justify-center items-center">
+      <div className="w-6/12 h-screen bg-gray-200 flex justify-center items-center mobile:w-full mobile:h-[110vh] mobile:p-4">
         <form
-          className="flex flex-col items-center bg-zinc-900 py-6 px-4 rounded-xl w-8/12 gap-3"
+          className="flex flex-col items-center bg-zinc-900 py-6 px-4 rounded-xl w-8/12 gap-3 mobile:w-11/12 mobile:mt-8"
           onSubmit={handleSubmit}
         >
           <InputTextGroup
@@ -57,6 +57,7 @@ export function CadastroScreen() {
             value={cadastro.nome}
             label="Nome"
             onChange={handleChange}
+            labelClass="desktop:w-full"
           />
           <InputTextGroup
             name="email"
@@ -64,6 +65,7 @@ export function CadastroScreen() {
             label="Email"
             onChange={handleChange}
             type="email"
+            labelClass="desktop:w-full"
           />
           <InputTextGroup
             name="dataNascimento"
@@ -71,6 +73,7 @@ export function CadastroScreen() {
             label="Data de nascimento"
             onChange={handleChange}
             type="date"
+            labelClass="desktop:w-full"
           />
           <InputTextGroup
             name="senha"
@@ -78,6 +81,7 @@ export function CadastroScreen() {
             label="senha"
             onChange={handleChange}
             type="password"
+            labelClass="desktop:w-full"
           />
           <InputTextGroup
             name="confirmaSenha"
@@ -85,14 +89,20 @@ export function CadastroScreen() {
             onChange={handleChange}
             label="Confirme sua Senha"
             type="password"
+            labelClass="desktop:w-full"
           />
-          <div className="flex justify-between items-center w-8/12 mt-4">
+          <div className="flex justify-between items-center w-8/12 mt-4 gap-3 desktop:flex-col desktop:w-full">
             <Button
               value="Cadastrar-se"
               secondary={true}
               onClick={handleCadastrarUsuario}
+              className="desktop:w-full"
             />
-            <Button value="Login" onClick={() => navigate('/login')} />
+            <Button
+              value="Login"
+              onClick={() => navigate('/login')}
+              className="desktop:w-full"
+            />
           </div>
         </form>
       </div>
