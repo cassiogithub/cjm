@@ -8,14 +8,14 @@ eventRoutes.post('/:eventoId/confirmar', (request, response) =>
   EventController.confirmarPresenca(request, response)
 )
 
+eventRoutes.get('/:hashEvento', (request, response) =>
+  EventController.getEvent(request, response)
+)
+
 eventRoutes.use(verifyJWT);
 
 eventRoutes.post('/:userId', (request, response) =>
   EventController.createEvent(request, response)
-)
-
-eventRoutes.get('/:hashEvento', (request, response) =>
-  EventController.getEvent(request, response)
 )
 
 eventRoutes.get('/:userId/:page/:size', (request, response) =>
@@ -33,8 +33,6 @@ eventRoutes.put('/:userId/:hashEvento/editar', (request, response) =>
 eventRoutes.get('/:eventoId/listarConfirmados', (request, response) =>
   EventController.listarConfirmados(request, response)
 )
-
-
 
 eventRoutes.delete(
   '/removeEvento/:userId/:eventoHash/',
