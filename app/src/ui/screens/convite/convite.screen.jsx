@@ -64,7 +64,7 @@ export function ConviteScreen() {
     <div className="min-h-screen bg-zinc-900 bg-cover bg-no-repeat flex flex-col items-center basis-full">
       {globalUser.token ? <Header /> : <HeaderSecondary />}
 
-      <main className="flex container justify-between items-stretch mt-4 grow gap-3">
+      <main className="flex container justify-between items-stretch mt-4 grow gap-3 mobile:flex-col-reverse mobile:px-2">
         <div className="flex justify-center items-center basis-full">
           <div
             className="flex items-center justify-start
@@ -86,20 +86,27 @@ export function ConviteScreen() {
               name="nome"
               onChange={handleChange}
               value={presence.nome}
+              labelClass="laptop:w-full"
             />
             <InputTextGroup
               label="Contato"
               name="contato"
               onChange={handleChange}
               value={presence.contato}
+              labelClass="laptop:w-full"
             />
-            <div className="flex w-2/4 gap-4">
+            <div className="flex w-2/4 gap-4 laptop:flex-wrap laptop:w-full">
               <Button
                 value="Entrar em evento"
                 secondary={true}
                 onClick={handleConfirmPresence}
+                className="laptop:w-full"
               />
-              <Button value="Login" onClick={() => navigate('/')} />
+              <Button
+                value="Login"
+                onClick={() => navigate('/')}
+                className="laptop:w-full"
+              />
             </div>
           </form>
         </div>
