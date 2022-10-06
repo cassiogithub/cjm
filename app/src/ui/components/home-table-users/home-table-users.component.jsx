@@ -7,13 +7,13 @@ export function HomeTableUsers({ participants, handleRemovePresence }) {
     <div className="flex flex-col">
       <h2 className="self-center text-lg mb-2 font-bold">Confirmados</h2>
       <div className="overflow-hidden border rounded-lg">
-        <table className="min-w-full divide-y divide-gray-200">
+        <table className="table-auto w-full divide-y divide-gray-200">
           <thead className="bg-gray-200 ">
             <tr>
               {TABLE_HEADER_ITEM.map((value, index) => (
                 <th
                   scope="col"
-                  className="px-6 py-3 text-xs font-bold text-left text-zinc-900 uppercase"
+                  className="mobile:px-1 mobile:py-1 px-6 py-3 text-xs font-bold text-left text-zinc-900 uppercase"
                   key={index}
                 >
                   {value}
@@ -21,7 +21,7 @@ export function HomeTableUsers({ participants, handleRemovePresence }) {
               ))}
               <th
                 scope="col"
-                className="px-6 py-3 text-xs font-bold text-left text-zinc-900 uppercase"
+                className="mobile:px-1 mobile:py-1 px-6 py-3 text-xs font-bold text-left text-zinc-900 uppercase"
               >
                 Excluir
               </th>
@@ -31,18 +31,18 @@ export function HomeTableUsers({ participants, handleRemovePresence }) {
             {participants.length > 0 ? (
               participants.map((participant) => (
                 <tr key={participant.id}>
-                  <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                  <td className="mobile:px-1 mobile:py-2 px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                     {participant.nome}
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                  <td className="mobile:px-1 mobile:py-1 px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                     Confirmado
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
+                  <td className="mobile:px-1 mobile:py-1 px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                     {participant.contato}
                   </td>
-                  <td className="px-6 py-4 text-sm text-red-700 whitespace-nowrap">
+                  <td className="mobile:px-1 mobile:py-1 px-6 py-4 text-sm text-red-700 whitespace-nowrap">
                     <button
-                      className="hover:brightness-200"
+                      className="hover:brightness-200 mobile:px-2 mobile:py-1"
                       onClick={() => handleRemovePresence(participant.id)}
                     >
                       Excluir
@@ -51,7 +51,7 @@ export function HomeTableUsers({ participants, handleRemovePresence }) {
                 </tr>
               ))
             ) : (
-              <tr className="h-12 flex items-center justify-center w-full">
+              <tr>
                 <td colSpan="4">Ops ainda não temos confirmados...</td>
               </tr>
             )}

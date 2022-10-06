@@ -128,7 +128,7 @@ export function Home() {
   return (
     <div className="min-h-screen bg-zinc-900 bg-cover bg-no-repeat flex flex-col items-center basis">
       <Header />
-      <main className="flex items-stretch justify-between container text-gray-200 mt-4 grow ">
+      <main className="flex desktop:flex-wrap items-stretch justify-between container text-gray-200 mt-4 grow ">
         <section className="flex flex-col justify-around p-4 grow">
           <h2 className="font-bold self-center text-xl">Evento Selecionado</h2>
           <HomeInfoEvento event={eventSelected} />
@@ -138,9 +138,9 @@ export function Home() {
           />
         </section>
 
-        <section className="flex flex-col p-4 border border-gray-200 rounded my-4 grow justify-between">
+        <section className="flex flex-col mobile:p-1 p-4 border border-gray-200 rounded my-4 grow justify-between mobile:mx-4">
           <h2 className="font-bold self-center text-xl mb-6">Seus Eventos</h2>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 mobile:gap-1 mobile:mx-4">
             {listEvent.content &&
               listEvent.content.map((evento) => (
                 <EventoCard

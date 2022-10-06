@@ -39,8 +39,10 @@ export function EventoCard({ evento, handleDisableEvent, handleSelectEvent }) {
       </button>
 
       <div className="flex justify-between items-center">
-        <div className="flex flex-col ">
-          <span>{evento.local}</span>
+        <div className="flex flex-col">
+          <span className="mobile:max-w-[180px] mobile:text-sm break-words">
+            {evento.local}
+          </span>
           <span>{formatDate(evento.data_evento)}</span>
         </div>
         {renderButton()}
