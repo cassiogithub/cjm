@@ -58,14 +58,6 @@ export function Header() {
             Buscar eventos
           </Link>
         </li>
-        <li>
-          <Link
-            to="/dicas"
-            className={isLocation('/discas') ? styleAtualLink : styleLink}
-          >
-            Dicas
-          </Link>
-        </li>
       </>
     )
   }
