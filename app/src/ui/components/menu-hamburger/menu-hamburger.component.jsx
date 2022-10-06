@@ -1,6 +1,6 @@
-import { HamburgerIcon } from '../../../assets/jsx_icons/hamburgerIcon'
+import { HamburgerIcon, CloseIcon } from '../../../assets'
 
-export function MenuHamburger() {
+export function MenuHamburger({ navOpen, setNavOpen }) {
   return (
     <button
       data-collapse-toggle="navbar-default"
@@ -10,9 +10,18 @@ export function MenuHamburger() {
       focus:outline-none border focus:ring-2 focus:ring-gray-200"
       aria-controls="navbar-default"
       aria-expanded="false"
+      onClick={() => setNavOpen(!navOpen)}
     >
       <span className="sr-only">Open main menu</span>
-      <HamburgerIcon />
+      {navOpen ? (
+        <span className="animate-fade-in-up">
+          <CloseIcon />
+        </span>
+      ) : (
+        <span className="animate-fade-in-down">
+          <HamburgerIcon />
+        </span>
+      )}
     </button>
   )
 }

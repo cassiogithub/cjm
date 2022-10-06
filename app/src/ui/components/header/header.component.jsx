@@ -1,10 +1,12 @@
 import { MenuHamburger } from '../'
 import { ExitIcon } from '../../../assets'
+import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import LogoCJM from '../../../assets/cjm_logo.png'
 import { useUserGlobal } from '../../../context'
 export function Header() {
   const [, setUserGlobal] = useUserGlobal()
+  const [navOpen, setNavOpen] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -26,51 +28,65 @@ export function Header() {
     navigate('/login')
   }
 
+  function renderList() {
+    return (
+      <>
+        <li>
+          <Link
+            to="/"
+            className={isLocation('/') ? styleAtualLink : styleLink}
+            aria-current="page"
+          >
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/novo-evento"
+            className={isLocation('/novo-evento') ? styleAtualLink : styleLink}
+          >
+            Novo evento
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/buscar-evento"
+            className={
+              isLocation('/buscar-evento') ? styleAtualLink : styleLink
+            }
+          >
+            Buscar eventos
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/dicas"
+            className={isLocation('/discas') ? styleAtualLink : styleLink}
+          >
+            Dicas
+          </Link>
+        </li>
+      </>
+    )
+  }
+
   return (
-    <header className="w-screen  border-b py-2">
-      <nav className="border-gray-200  container mx-auto">
-        <div className="container flex flex-wrap justify-between items-center mx-auto">
+    <header className="container w-screen border-b py-2 mobile:px-4 ">
+      <nav className="border-gray-200   mx-auto">
+        <div className=" flex flex-wrap justify-between items-center mx-auto">
           <Link to="/">
             <div className="w-10 sm:w-12">
               <img src={LogoCJM} alt="logo" />
             </div>
           </Link>
 
-          <MenuHamburger />
+          <MenuHamburger setNavOpen={setNavOpen} navOpen={navOpen} />
 
-          <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className={styleList}>
-              <li>
-                <Link
-                  to="/"
-                  className={isLocation('/') ? styleAtualLink : styleLink}
-                  aria-current="page"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/novo-evento"
-                  className={isLocation('/novo-evento') ? styleAtualLink : styleLink}
-                >
-                  Novo evento
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/buscar-evento"
-                  className={isLocation('/buscar-evento') ? styleAtualLink : styleLink}
-                >
-                  Buscar eventos
-                </Link>
-              </li>
-              <li>
-                <Link to="/dicas" className={isLocation('/discas') ? styleAtualLink : styleLink}>
-                  Dicas
-                </Link>
-              </li>
-            </ul>
+          <div
+            className="hidden w-full md:block md:w-auto "
+            id="navbar-default"
+          >
+            <ul className={styleList}>{renderList()}</ul>
           </div>
 
           <span onClick={handleLogout}>
@@ -78,6 +94,15 @@ export function Header() {
           </span>
         </div>
       </nav>
+
+      {navOpen && (
+        <div
+          className="md:hidden static top-0 mt-4 left-0 w-full h-60 rounded transition-all bg-gray-200 flex justify-center items-center animate-fade-in-down"
+          data-transition-leave-active="animate-fade-in-up"
+        >
+          <ul className="bg-zinc-900 rounded w-2/4">{renderList()}</ul>
+        </div>
+      )}
     </header>
   )
 }
