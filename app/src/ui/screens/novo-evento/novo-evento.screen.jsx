@@ -42,29 +42,31 @@ export function NovoEvento() {
   return (
     <div className="min-h-screen bg-zinc-900 bg-cover bg-no-repeat flex flex-col items-center basis-full">
       <Header />
-      <main className="flex container justify-between items-stretch mt-4 grow gap-3">
+      <main className="flex container justify-between items-stretch mt-4 grow gap-3 mobile:flex-col-reverse mobile:items-center">
         <div className="flex justify-start items-center basis-full">
           <NovoEventoListInfo />
         </div>
 
-        <div className="flex justify-end items-center basis-full">
+        <div className="flex justify-end items-center basis-full mobile:w-full mobile:justify-center ">
           <form
             onSubmit={handleSubmit}
             className="flex flex-col items-center justify-center
             p-4 rounded-lg border grow gap-4 max-w-xl
-            h-4/6 text-zinc-900 font-bold"
+            h-4/6 text-zinc-900 font-bold mobile:mx-2 "
           >
             <InputTextGroup
               label="Nome do evento"
               name="nome"
               onChange={handleChange}
               value={registerEvent.nome}
+              labelClass="laptop:w-full"
             />
             <InputTextGroup
               label="Local"
               name="local"
               onChange={handleChange}
               value={registerEvent.local}
+              labelClass="laptop:w-full"
             />
             <InputTextGroup
               label="Data/Hora"
@@ -72,11 +74,13 @@ export function NovoEvento() {
               onChange={handleChange}
               value={registerEvent.dataEvento}
               type="datetime-local"
+              labelClass="laptop:w-full"
             />
             <Button
               value="Criar Evento"
               secondary={true}
               onClick={handleCreateEvent}
+              labelClass="laptop:w-full"
             />
           </form>
         </div>

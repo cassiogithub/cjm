@@ -12,12 +12,16 @@ export function HomeInfoEvento({ event }) {
     return (
       <ul className="flex flex-col gap-2">
         <li>
-          <span className="text-sm">Evento</span>
+          <span className="text-sm mobile:max-w-[70vw] break-words">
+            Evento
+          </span>
           <p className="text-lg">{event.nome}</p>
         </li>
         <li>
-          <span className="text-sm">Local</span>
-          <p className="text-lg">{event.local}</p>
+          <span className="text-sm ">Local</span>
+          <p className="text-lg mobile:max-w-[70vw] break-words">
+            {event.local}
+          </p>
         </li>
         <li>
           <span className="text-sm">Hash de busca</span>
