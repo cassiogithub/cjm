@@ -3,8 +3,7 @@ import LogoCJM from '../../../assets/cjm_logo.png'
 
 export function HeaderSecondary() {
   const styleLink =
-    'block py-2 pr-4 pl-3 text-white rounded md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
-
+    'block py-2 pr-4 pl-3 text-white rounded md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0'
   const styleList =
     'flex items-center mobile:p-2 p-4 mt-4 rounded-lg border border-gray-100 mobile:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 mobile:border-none '
 
