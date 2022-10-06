@@ -1,4 +1,4 @@
-export function Button({ value, secondary, onClick }) {
+export function Button({ value, secondary, onClick, className }) {
   const primaryStyle =
     'bg-zinc-900 text-gray-200 border-gray-200 hover:bg-gray-200 hover:border-zinc-900 hover:text-zinc-900 '
   const secondaryStyle =
@@ -8,7 +8,9 @@ export function Button({ value, secondary, onClick }) {
       type="button"
       className={` ${
         secondary ? secondaryStyle : primaryStyle
-      } border p-3 rounded-md w-32 font-bold transition-all`}
+      } border p-3 rounded-md w-32 font-bold transition-all
+      ${className}
+      `}
       onClick={onClick}
     >
       {value}
